@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @tab.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @tab.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_tab_path(@tab) %> |
+<%= link_to 'Back', tabs_path %>

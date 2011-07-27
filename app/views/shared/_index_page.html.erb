@@ -1,0 +1,161 @@
+<% content_for :menu do %>
+  <ul class="menu">
+    <% @menus.each do |menu| %>
+      <li class="button"><%= link_to "#{menu.title}", content_home_path(menu.content) %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @container == "content"  %>
+
+  <h1><%= @content.title %></h1>
+  <%= raw @content.content %>
+
+<% elsif @container == "advice" %>
+
+  <h1><%= @advice.title %></h1>
+  <%= raw @advice.description %>
+
+<% else %>
+
+  <h1><%= @slider.title %></h1>
+  <%= raw @slider.description %>
+
+<% end %>
+
+<% content_for :slider do %>
+
+  <!-- Slideshow here! -->
+
+            <!-- "previous slide" button -->
+            <a class="backward">prev</a>
+
+            <!-- container for the slides -->
+            <div class="images">
+
+              <% @slides.each do |slide| %>
+                <div>
+                  <h3><%= slide.title %></h3>
+                  <p>
+                   <%= link_to image_tag("kep_#{slide.image_tag}.png"), slider_home_path(slide), :class => "slide_image_link" %>
+                   <% truncated_description = truncate("#{slide.short_description}", :length => 250, :omission => "...") %>
+                   <%= link_to "#{ raw truncated_description}", slider_home_path(slide), :class => "slide_short_description" %>
+                  </p>
+                </div>
+              <% end %>
+
+            </div>
+
+            <!-- "next slide" button -->
+            <a class="forward">next</a>
+
+            <!-- the tabs -->
+            <div class="slidetabs">
+                <%= link_to "#"%>
+                <%= link_to "#"%>
+                <%= link_to "#"%>
+            </div>
+
+            <br/><br/>
+
+            <div class="play">PLAY</div>
+            <div class="stop">STOP</div>
+
+            <!-- Slideshow here! -->
+
+<% end %>
+
+<% content_for :right do %>
+
+    <h1>Főmenü</h1>
+    <% @contents.each do |content| %>
+      <div class="menu_title"><%= link_to"#{content.title}", content_home_path(content) %></div>
+    <% end %>
+
+    <br/>
+
+    <!-- SCROLLABLE -->
+
+    <h1>Hírek, aktualitások</h1>
+
+    <div id="actions">
+      <div class="span-2">
+        <a class="prev">Előző</a>
+      </div>
+      <div class="span-2 last append-3">
+        <a class="next">Következő</a>
+      </div>
+    </div>
+
+    <br/><br/>
+
+    <!-- root element for scrollable -->
+    <div class="scrollable vertical" id="scroller">
+
+      <!-- root element for the scrollable elements -->
+      <div class="items"> <!-- START ITEMS -->
+
+      <% div_value = 1 %>
+
+            <% @advices.each do |advice| %>
+              <% value = div_value.modulo(3) %>
+              <% if value == 1 %>
+                <div class="third"> <!-- third start -->
+                  <div class="advice_title"><%= link_to "#{advice.title}", advice_home_path(advice) %></div>
+                    <div class="advice_content">
+                      <% truncated_advice = truncate("#{advice.description}", :length => 200, :omission => "...") %>
+                      <%= raw truncated_advice %>
+                      <%= link_to image_tag("read_more.jpg"), advice_home_path(advice), :class => "read_more" %>
+                    </div>
+
+              <% elsif value == 2  %>
+                  <div class="advice_title"><%= link_to "#{advice.title}", advice_home_path(advice) %></div>
+                  <div class="advice_content">
+                  <% truncated_advice = truncate("#{advice.description}", :length => 200, :omission => "...") %>
+                  <%= raw truncated_advice %>
+                  <%= link_to image_tag("read_more.jpg"), advice_home_path(advice), :class => "read_more" %>
+                  </div>
+
+              <% else %>
+                  <div class="advice_title"><%= link_to "#{advice.title}", advice_home_path(advice) %></div>
+                  <div class="advice_content">
+                  <% truncated_advice = truncate("#{advice.description}", :length => 200, :omission => "...") %>
+                  <%= raw truncated_advice %>
+                  <%= link_to image_tag("read_more.jpg"), advice_home_path(advice), :class => "read_more" %>
+                  </div>
+               </div> <!-- third end -->
+              <% end %>
+
+              <% div_value += 1 %>
+
+            <% end %>
+
+      </div> <!-- END ITEMS -->
+
+    <!-- SCROLLABLE -->
+
+<% end %>
+
+<% if @tabs.empty? %>
+    <% content_for :tab do %>
+        <!-- NINCS HOZZARENDELT TAB -->
+    <% end %>
+<% else %>
+    <% content_for :tab do %>
+        <h1><%= @info_name %></h1>
+        <ul class="tabs">
+          <% @tabs.each do |tab| %>
+              <li><%= link_to "#{tab.title}", "#", :class => "m" %></li>
+          <% end %>
+        </ul>
+
+        <!-- tab "panes" -->
+        <div class="panes">
+          <% @tabs.each do |tab| %>
+              <div><%= raw tab.description %></div>
+          <% end %>
+        </div>
+
+    <% end %>
+
+<% end %>

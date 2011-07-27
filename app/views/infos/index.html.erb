@@ -1,0 +1,28 @@
+<h1>Fülekkel ellátott területek</h1>
+
+<div class="add_new">
+  <%= link_to 'Új fülekkel ellátott terület létrehozása', new_info_path %>
+  <%= link_to 'Vissza', admins_path %>
+</div>
+
+<table id="box-table-a">
+  <thead>
+    <tr>
+      <th scope="col">Cím</th>
+      <th scope="col">&nbsp;</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @infos.each do |info| %>
+      <tr>
+        <td><%= info.name %></td>
+        <td><%= link_to 'Módosít', edit_info_path(info) %></td>
+        <td class="delete"><%= link_to 'Töröl', info, :confirm => 'Biztosan törlöd?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+

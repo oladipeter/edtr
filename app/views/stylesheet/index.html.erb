@@ -1,0 +1,5 @@
+<%= form_tag @stylesheets do |f| %>  
+  <%= label_tag :active, "Active stylesheet" %><br/>
+  <%= select_tag(:active, options_for_select(['Mikrokam', 'Mikrovoks'], ["1" , "1"])) %>
+  <%= submit_tag %>
+<% end %>

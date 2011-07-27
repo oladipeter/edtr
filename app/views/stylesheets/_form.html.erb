@@ -1,0 +1,12 @@
+<%= form_for(@stylesheet) do |f| %> 
+  
+  <div class="field">
+    <%= f.label :active %><br />
+    <%= f.text_field :active %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Stylesheet módosítása" %>
+  </div>
+
+<% end %>

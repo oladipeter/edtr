@@ -1,0 +1,29 @@
+<%= form_for(@menu) do |f| %>
+  <% if @menu.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
+
+      <ul>
+      <% @menu.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title, "Cím" %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content_id, "Tartalommal való összekötés" %><br />
+    <%= f.select("content_id", Content.all.collect {|content| [ content.title, content.id ] }) %>
+    <!--
+     Checkbox - 1 parameter, az objektum, ami az adatbazisban is van, 2 parametere ha checked milyen erteknek felejen
+     meg az adatbazisban ( ebben az esetben a parameter boolean ) alapbol a checked = 1. A class csak css miatt kell.
+     -->
+  </div>
+  <div class="actions">
+    <%= f.submit "Rendben!" %>
+  </div>
+<% end %>

@@ -1,0 +1,62 @@
+<% content_for :menu do %>
+  <ul class="menu">
+    <% @menus.each do |menu| %>
+      <li class="button"><%= link_to "#{menu.title}", show_menu_content_home_path(menu.content) %></li>      
+    <% end %>
+  </ul>
+<% end %>
+
+<h1><%= @content.title %></h1>
+<%= raw @content.content %>
+
+<% content_for :slider do %>
+
+  <!-- Slideshow here! -->
+
+            <!-- "previous slide" button -->
+            <a class="backward">prev</a>
+
+            <!-- container for the slides -->
+            <div class="images">
+
+              <% @slides.each do |slide| %>
+                <div>
+                  <h3><%= slide.title %></h3>
+                  <p>
+                   <%= image_tag("kep_#{slide.image_tag}.png")   %>
+                   <% truncated_description = truncate("#{slide.description}", :length => 450, :omission => "...") %>
+                   <%= truncated_description %>
+                  </p>
+                </div>
+              <% end %>
+
+            </div>
+
+            <!-- "next slide" button -->
+            <a class="forward">next</a>
+
+            <!-- the tabs -->
+            <div class="slidetabs">
+                <%= link_to "#"%>
+                <%= link_to "#"%>
+                <%= link_to "#"%>
+            </div>
+
+            <br/><br/>
+
+            <div class="play">PLAY</div>
+            <div class="stop">STOP</div>
+
+            <!-- Slideshow here! -->
+
+<% end %>
+
+<% content_for :advice do %>
+    <% @advices.each do |advice| %>
+        <div class="advice_title"><%= advice.title %></div>
+        <div class="advice_content">          
+          <% truncated_advice = truncate("#{advice.description}", :length => 150, :omission => "...") %>
+          <%= raw truncated_advice %>
+        </div>
+    <% end %>
+<% end %>

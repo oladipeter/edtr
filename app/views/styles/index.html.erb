@@ -1,0 +1,9 @@
+<h1>Styles#index</h1>
+<p>Find me in app/views/styles/index.html.erb</p>
+
+<%= form_tag @style do |f| %>
+  <%= label_tag :name %>:
+  <%= text_field_tag :name %><br />
+
+  <%= f.submit %>
+<% end %>

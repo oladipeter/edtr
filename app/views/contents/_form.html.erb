@@ -1,0 +1,33 @@
+<%= form_for(@content) do |f| %>
+  <% if @content.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@content.errors.count, "error") %> prohibited this content from being saved:</h2>
+
+      <ul>
+      <% @content.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title, "Cím" %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :url, "Url" %><br />
+    <%= f.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content, "Tartalom" %><br />
+    <div class="ckeditor">
+      <%= f.cktext_area :content, :toolbar=>'light', :width=>'100%', :height=>'200px', :skin => "office2003" %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit "Rendben!" %>
+  </div>
+<% end %>

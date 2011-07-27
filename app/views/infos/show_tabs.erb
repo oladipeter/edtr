@@ -1,0 +1,18 @@
+<h1>Tabok ehhez az infóhoz :</h1>
+
+<table id="box-table-a">
+  <thead>
+    <tr>
+      <th scope="col">Tab neve :</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tabs.each do |tab| %>
+      <tr>
+        <td><%= tab.title %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>

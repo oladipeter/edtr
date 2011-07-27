@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @stylesheet.name %>
+</p>
+
+<p>
+  <b>Name value:</b>
+  <%= @stylesheet.name_value %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @stylesheet.active %>
+</p>
+
+
+<%= link_to 'Edit', edit_stylesheet_path(@stylesheet) %> |
+<%= link_to 'Back', stylesheets_path %>

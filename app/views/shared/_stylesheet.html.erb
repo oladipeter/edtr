@@ -1,0 +1,29 @@
+<% @stylesheets.each do |stylesheet| %>
+  <% case stylesheet.name_value %>
+  <% when "mikrovoks" %>
+    <%= stylesheet_link_tag "mikrovoks/mikrovoks" %>
+
+  <% when "mvmonitor" %>
+    <%= "Mikrokam" %>
+
+  <% when "digirat" %>
+    <%= "Mikrokam" %>
+
+  <% when "mikrokam" %>
+    <%= "Mikrokam" %>
+
+  <% when "edtr" %>
+    <%= "Mikrokam" %>
+
+  <% when "sequence" %>
+    <%= "Mikrokam" %>
+
+  <% when "onkormanyzatitv" %>
+    <%= "Mikrokam" %>
+
+  <% else %>
+    <%= stylesheet_link_tag "default/default" %>
+
+  <% end %>
+
+<% end %>

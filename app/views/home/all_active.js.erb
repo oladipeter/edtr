@@ -1,0 +1,16 @@
+$(".response_all").hide()
+
+<% @all_tabs.each do |tab| %>
+ $("<p><h1><%= escape_javascript link_to tab.title, '#' %></h1></p>").appendTo('.response_all')
+<% end %>
+
+$(".response_all").fadeIn(3000)
+
+$("div.response_all").click(function () {
+    $(this).fadeOut("slow");
+});
+
+
+
+
+

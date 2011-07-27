@@ -1,0 +1,6 @@
+/* ONE TAB */
+
+$('.response').hide().text("<%= escape_javascript(raw @tab.title) %>").append("<%= escape_javascript(raw @tab.description) %>").append("<div class='close'>CLOSE</div>").fadeIn("slow");
+$("div.close, div.response").click(function () {
+    $(this).fadeOut("slow");
+});

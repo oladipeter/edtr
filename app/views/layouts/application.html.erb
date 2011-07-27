@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EDtR - Elektronikus Döntéstámogató Rendszer, döntés-támogató, döntéstámogató, határozat, rendelet, publikácó, önkormányzati döntés támogatás, döntéstámogatás</title>
+  <%= stylesheet_link_tag :all %>
+  <%= render :partial => "shared/stylesheet" %> <!-- In application.helper -->
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+  <!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+</head>
+<body>
+
+<div id="main">
+
+    <div id="block_1">
+      <div class="container">
+        <div class="span-8 prepend-16"> <!-- 24 oszlopos ami ele berak 16 ures oszlopot! -->
+          <div class="content">
+            <% if admin_signed_in? %>
+            <b>Most éppen be vagy lépve adminisztrátorként!</b>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="block_2">
+      <div class="container">
+        <div class="span-8"><%= image_tag("logo.jpg") %></div>
+        <div class="span-16 last">
+          <%= yield :menu %>
+        </div>
+      </div>
+    </div>
+
+  <!-- Jquery Tools ** SLIDER **   -->
+
+    <div id="block_4">
+      <div class="container">
+        <div id="big_pic">
+          <div class="span-24" id="text_container">
+
+            <%= yield :slider %>           
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Jquery Tools ** SLIDER **   -->
+
+    <div id="block_6">
+      <div class="container prepend-top">
+        <div class="span-16">
+          <div id="user_nav">
+          </div>
+          <div id="message">
+            <% flash.each do |name, msg| %>
+              <%= content_tag :div, msg, :id => "flash_#{name}" %>
+            <% end %>
+          </div>
+          <div class="text">
+            <%= yield %>
+          </div>
+
+          <!-- Jquery Tools ** TABS **   -->
+
+            <div id="tabs_div">
+                <%= yield :tab %>
+              <script>
+                 $("ul.tabs").tabs("div.panes > div", {effect: 'fade', fadeInSpeed: 400});
+              </script>
+            </div>
+
+          <!-- Jquery Tools ** TABS **   -->
+
+          <div id="hatterem">
+            &nbsp;
+          </div>
+
+        </div>
+        <div class="span-8 last">
+          <div class="right_text">
+            <div id="advice">
+              <%= yield :right %>
+            </div>
+            <div id="facebook"><!-- FACEBOOK -->
+                <div id="fb-root"></div><script src="http://connect.facebook.net/hu_HU/all.js#xfbml=1"></script><fb:like-box href="http://www.facebook.com/pages/%C3%96nkorm%C3%A1nyzati-TV/164894550219087" width="280" height="625" show_faces="true" stream="true" header="false"></fb:like-box>
+              </div><!-- FACEBOOK -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div id="block_5">
+      <div class="container">
+        <div class="span-16" id="block5_image_left">
+          <div class="title">
+            <h1>Professzionális megoldások a Globomax-al!</h1>
+          </div>
+          <div class="text">
+            Hiszünk abban, hogy ügyfeleink céljainak elérésén keresztül a magunk módján hozzájárulhatunk az <b>önkormányzati munka</b> transzparenciájához!
+            <div class="button"><%= link_to "Bővebb információ", "http://www.globomax.hu" %></div>
+          </div>
+        </div>
+        <div class="span-8 last" id="block5_image_right">
+           <div class="title">
+            <h1>Dokumentációk</h1>
+            <ul class="services">
+              <li><%= link_to"Kezelői leírás", "http://globomax.hu" %></li>
+              <li><%= link_to"Termék ismertető", "http://globomax.hu" %></li>
+              <li><%= link_to"Referenciáink", "http://globomax.hu/globomax/c_referencialista.jsp" %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="block_7">
+      <div class="container">
+        <div class="span-24">
+          <div class="tovabbi_termekek">
+            <h1>Cégünk további termékei</h1>
+            Az önálló fejlesztő, gyártó, tevékenység eredményeként saját termékeink köre évről évre bővül. A meglevő termékek hardverét folyamatosan fejlesztjük, a programok szolgáltatásait bővítjük. Hiszünk abban, hogy ügyfeleink céljainak elérésén keresztül a magunk módján hozzájárulhatunk az önkormányzati munka transzparenciájához. Hisszük, hogy munkánkkal csökkenthetjük a lakosság, a választópolgárok, és politika távolságát.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="block_8">
+      <div class="container">
+        <div class="span-24">
+          <div class="sor">
+            <div class="span-8">
+              <div class="text">
+                   <h3><%= link_to "MikroVoks szavazatszámláló rendszer", "http://mikrovoks.globomax.hu" %></h3>
+                   <%= image_tag("product_mikrovoks.jpg") %>
+                   A jelenleg kapható legkorszerűbb, integrált testületi rendszer, amely nem csak önkormányzati testületek, de más demokratikus és tőkearányos döntéshozatali testületek munkáját szolgálja ki az előkészítéstől a döntések végrehajtásáig és publikálásáig...
+              </div>
+            </div>
+            <div class="span-8">
+              <div class="text">
+                   <h3><%= link_to "MikroKam robotkamerás rendszer", "http://mikrokam.globomax.hu" %></h3>
+                   <%= image_tag("product_mikrokam.jpg") %>
+                   A modulárisan felépülő rendszerhez olyan szolgáltatások kapcsolhatók, mint a szavazás lebonyolítása, elektronikus archiválás, Broadcast minőségű kimenetek biztosítása a kábelhálózat vagy a helyi televízió irányába...
+              </div>
+            </div>
+            <div class="span-8 last">
+              <div class="text">
+                   <h3><%= link_to "seQUEnce ügyfélhívó rendszer", "http://sequence.globomax.hu" %></h3>
+                   <%= image_tag("product_sequence.jpg") %>
+                   A GLOBOMAX Kft-ben kifejlesztett seQUEnceügyfélirányító rendszer, a nagyobb ügyfélforgalmú helyek részére ajánlott, számítógép vezérelt, elektronikus rendszer. Ennek segítségével könnyebbé lehet tenni...
+              </div>
+            </div>
+
+            <!-- Kovetkezo 3 termek megjelenitese -->
+
+            <div class="span-8">
+              <div class="text">
+                   <h3><%= link_to "Elektronikus Döntéstámogató Rendszer", "http://edtr.globomax.hu" %></h3>
+                   <%= image_tag("product_edtr.jpg") %>
+                   Ha mindezt hagyományos papír alapon szeretnénk adminisztrálni, az évek múlásával egyre nagyobb problémát fog okozni a "papírrengeteg". Nehézkes lesz előkeresni egy korábbi döntést...
+              </div>
+            </div>
+            <div class="span-8">
+              <div class="text">
+                   <h3><%= link_to "Önkormányzati TV - Média szerver", "http://onkormanyzati.tv" %></h3>
+                   <%= image_tag("product_onkormanyzatitv.jpg") %>
+                   Bizonyára Ön is egyetért velünk abban, hogy a választópolgárok szívesen tudnának többet a képviselőtestület munkájáról. Szeretnének jobban belelátni a döntéshozatal folyamatába...
+              </div>
+            </div>
+            <div class="span-8 last">
+              <div class="text">
+                   <h3>Elérhetőségünk</h3>
+                   Cím: 1155 Budapest, Dembinszky utca 1. <br/>
+                   GPS koordináták: <br/>
+                   47o32'51,09" LAT (N)<br/>
+                   19o06'29,04" LON (E)<br/>
+                   Telefon: 06-1-306-5371
+                   Ügyfélszolgálat:
+                   06-1-271-0451
+                   Fax:
+                   06-1-306-53-64
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="block_9">
+      <div class="container">
+        <div class="span-24">
+          <div class="footer">Copyright © 2011 Globomax Kft. - Minden jog fenntartva.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<%= form_for(@slider) do |f| %>
+  <% if @slider.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@slider.errors.count, "error") %> prohibited this slider from being saved:</h2>
+
+      <ul>
+      <% @slider.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title, "Cím" %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :short_description, "Rövid leírás" %><br />
+    <%= f.text_field :short_description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description, "Leírás" %><br />
+    <%= f.cktext_area :description, :toolbar=>'slim', :width=>'100%', :height=>'200px', :skin => "v2" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image_tag, "Kép hozzárendelés" %><br />
+    <%= f.select(:image_tag, options_for_select([['Kép-1', 1], ['Kép-2', 2], ['Kép-3', 3]])) %>
+  </div>
+
+  <%= link_to "Kép-1", "#" %><%= image_tag("kep_1.png", :class=> "form_image") %><br/>
+  <%= link_to "Kép-2", "#" %><%= image_tag("kep_2.png", :class=> "form_image")%><br/>
+  <%= link_to "Kép-3", "#" %><%= image_tag("kep_3.png", :class=> "form_image")%><br/>
+
+  <br/><br/>
+
+  <div class="actions">
+    <%= f.submit "Rendben!" %>
+  </div>
+<% end %>

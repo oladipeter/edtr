@@ -1,0 +1,26 @@
+<h1>Template-ek listája</h1>
+
+<div class="add_new">
+  <%= link_to 'Vissza', admins_path %>
+</div>
+
+<table id="box-table-a">
+  <thead>
+    <tr>
+      <th scope="col">Név</th>
+      <th scope="col">&nbsp;</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stylesheets.each do |stylesheet| %>
+      <tr>
+        <td><%= stylesheet.name %></td>
+        <td><%= stylesheet.active %></td>
+        <td><%= link_to 'Edit', edit_stylesheet_path(stylesheet) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>

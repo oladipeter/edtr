@@ -1,0 +1,158 @@
+<div class="span-24">
+   <%= render :partial => "shared/admin_info" %>    
+</div>
+
+<!-- TEMPLATE TABLE --------------------------------------------------------------------------------------------------->
+
+<h2>Template módosítása</h2>
+
+<table id="box-table-a">
+  <thead>
+    <tr>
+      <th scope="col">Template</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= link_to"Template módosítása", stylesheets_path %></td>
+      </tr>
+  </tbody>
+
+</table>
+
+<br/><br/>
+
+<!-- END TEMPLATE TABLE -->
+
+<!-- ADMIN TABLE ------------------------------------------------------------------------------------------------------>
+
+<h2>Adminisztrátorok szerkesztése</h2>
+
+<div class="add_new">
+  <%= link_to "Új adminisztrátor hozzáadása", new_admin_path %>
+</div>
+
+<table id="box-table-a">
+  <thead>
+    <tr>
+      <th scope="col">Email</th>
+      <th scope="col">&nbsp;</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admins.each do |admin| %>
+      <tr>
+        <td><%= link_to"#{admin.email}", edit_admin_path(admin) %></td>
+        <td><%= link_to"Módosít", edit_admin_path(admin) %></td>
+        <td class="delete"><%= link_to"Töröl", admin, :confirm => 'Are you sure?', :method => "delete" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+<!-- END ADMIN TABLE -->
+
+<br/><br/>
+
+<!-- TARTALOM TABLE --------------------------------------------------------------------------------------------------->
+
+<h2>Tartalom szerkesztése</h2>
+
+<table id="box-table-a">
+  <thead>
+    <tr>
+      <th scope="col">Szerkeszthető felületek :</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= link_to "Tartalom módosítása", contents_path%></td>
+    </tr>
+    <tr>
+      <td><%= link_to "Hírek módosítása", advices_path%></td>
+    </tr>
+  </tbody>
+
+</table>
+
+<!-- END TARTALOM TABLE -->
+
+<br/><br/>
+
+<!-- MENU TABLE -->
+
+<h2>Menüpontok szerkesztése</h2>
+
+<table id="box-table-a">
+
+  <thead>
+    <tr>
+      <th scope="col">Szerkeszthető felületek :</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= link_to "Menüpontok módosítása", menus_path %></td>
+    </tr>
+  </tbody>
+
+</table>
+
+<!-- END MENU TABLE -->
+
+<br/><br/>
+
+<!-- TARTALOM TABLE --------------------------------------------------------------------------------------------------->
+
+<h2>Slider szerkesztése</h2>
+
+<table id="box-table-a">
+  <thead>
+    <tr>
+      <th scope="col">Slider a fejlécben :</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= link_to "Slider a fejlécben", sliders_path%></td>
+    </tr>
+  </tbody>
+
+</table>
+
+<!-- END TARTALOM TABLE -->
+
+<br/><br/>
+
+<!-- FULEKKEL ELLATOTT TERULET TABLE ---------------------------------------------------------------------------------->
+
+<h2>Fülekkel ellátott terület szerkesztése</h2>
+
+<table id="box-table-a">
+  <thead>
+    <tr>
+      <th scope="col">Szerkeszthető felületek :</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= link_to "Fülekkel ellátott területek", infos_path%></td>
+    </tr>
+    <tr>
+      <td><%= link_to "Fülek", tabs_path%></td>
+    </tr>
+  </tbody>
+
+</table>
+
+<!-- END TARTALOM TABLE -->
+
+<br/><br/>

@@ -1,0 +1,5 @@
+<div class="advice_title"><%= link_to"#{content.title}", content_home_path(content) %></div>
+<div class="advice_content">
+  <% truncated_content = truncate("#{content.content}", :length => 200, :omission => "...") %>
+  <%= raw truncated_content %>
+</div>

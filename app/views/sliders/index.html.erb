@@ -1,0 +1,27 @@
+<h1>Slider-ek listája</h1>
+
+<div class="add_new">
+  <%= link_to 'Új slider felvitele', new_slider_path %>
+  <%= link_to 'Vissza', admins_path %>
+</div>
+
+<table id="box-table-a">
+  <thead>
+    <tr>
+      <th scope="col">Cím</th>
+      <th scope="col">&nbsp;</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sliders.each do |slider| %>
+      <tr>
+        <td><%= slider.title %></td>
+        <td><%= link_to 'Módosít', edit_slider_path(slider) %></td>
+        <td class="delete"><%= link_to 'Töröl', slider, :confirm => 'Biztosan törlöd?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>

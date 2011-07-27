@@ -1,0 +1,32 @@
+<h1>Tartalmak listája</h1>
+
+<div class="add_new">
+  <%= link_to 'Új tartalom felvitele', new_content_path %>
+  <%= link_to 'Vissza', admins_path %>
+</div>
+
+<table id="box-table-a">
+  <thead>
+    <tr>
+      <th scope="col">Cím</th>
+      <th scope="col">&nbsp;</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @contents.each do |content| %>
+
+      <tr>
+
+        <td><%= content.title %></td>
+
+        <td><%= link_to 'Módosít', edit_content_path(content) %></td>
+        <td class="delete"><%= link_to 'Töröl', content, :confirm => 'Biztosan törlöd?', :method => :delete %></td>
+
+      </tr>
+
+  <% end %>
+  </tbody>
+
+</table>

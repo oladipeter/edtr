@@ -1,0 +1,25 @@
+<%= form_for(@advice) do |f| %>
+  <% if @advice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@advice.errors.count, "error") %> prohibited this advice from being saved:</h2>
+
+      <ul>
+      <% @advice.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title, "Cím" %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description, "Leírás" %><br />
+    <%= f.cktext_area :description, :toolbar=>'slim', :width=>'100%', :height=>'200px', :skin => "v2" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Rendben!" %>
+  </div>
+<% end %>

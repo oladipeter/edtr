@@ -1,0 +1,27 @@
+<h1>Menüpontok listája</h1>
+
+<div class="add_new">
+  <%= link_to 'Új menüpontok felvitele', new_menu_path %>
+  <%= link_to 'Vissza', admins_path %>
+</div>
+
+<table id="box-table-a">
+  <thead>
+    <tr>
+      <th scope="col">Cím</th>
+      <th scope="col">&nbsp;</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @menus.each do |menu| %>
+      <tr>
+        <td><%= menu.title %></td>
+        <td><%= link_to 'Módosít', edit_menu_path(menu) %></td>
+        <td class="delete"><%= link_to 'Töröl', menu, :confirm => 'Biztosan törlöd?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
