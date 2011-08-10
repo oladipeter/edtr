@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ContentsController < ApplicationController
 
   before_filter :authenticate_admin!
@@ -8,7 +9,7 @@ class ContentsController < ApplicationController
   def index
     @info = Info.new
     @info_contents = Info.all
-    @contents = Content.all
+    @contents = Content.find(:all, :order => "sort_number ASC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -73,15 +74,11 @@ class ContentsController < ApplicationController
   def destroy
     @content = Content.find(params[:id])
     if (params[:id] == '1')
-      redirect_to contents_path, :notice => 'Cannot delete this item (id=1)'
+      redirect_to contents_path, :notice => 'Ezt a tartalmat nem törölheted, de módosíthatod (id=1)'
     else
-      #redirect_to contents_path, :notice => 'deleted'
-      render :text => "#{params[:id]}"
-#      @content.destroy
-#      respond_to do |format|
-#        format.html { redirect_to(contents_url) }
-#        format.xml  { head :ok }
-#      end
+       #render :text => "#{params[:id]}"
+      @content.destroy
+      redirect_to contents_path, :notice => 'Sikeres törlés!'
     end
   end
 

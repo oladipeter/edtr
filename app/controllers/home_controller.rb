@@ -20,17 +20,17 @@ class HomeController < ApplicationController
 
   def advice_object_init
     @advice = Advice.new
-    @advices = Advice.find(:all, :order => "updated_at DESC", :limit => 12)
+    @advices = Advice.find(:all, :order => "updated_at DESC")
   end
 
   def menu_object_init #on the layout
     @menu = Menu.new
-    @menus = Menu.find(:all) #where( :active => true )
+    @menus = Menu.find(:all, :order => "sort_number ASC") #where( :active => true )
   end
 
   def content_object_init #on the layout
     @content = Content.new
-    @contents = Content.find(:all, :order => "updated_at DESC")
+    @contents = Content.find(:all, :order => "sort_number ASC")
   end
 
   def tab_object_init #on the layout

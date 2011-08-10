@@ -101,7 +101,8 @@
               <% value = div_value.modulo(3) %>
               <% if value == 1 %>
                 <div class="third"> <!-- third start -->
-                  <div class="advice_title"><%= link_to "#{advice.title}", advice_home_path(advice) %></div>
+                  <% truncated_title = truncate("#{advice.title}", :length => 26, :omission => "...") %>
+                  <div class="advice_title"><%= link_to "#{truncated_title}", advice_home_path(advice) %></div>
                     <div class="advice_content">
                       <% truncated_advice = truncate("#{advice.description}", :length => 200, :omission => "...") %>
                       <%= raw truncated_advice %>
@@ -109,7 +110,8 @@
                     </div>
 
               <% elsif value == 2  %>
-                  <div class="advice_title"><%= link_to "#{advice.title}", advice_home_path(advice) %></div>
+                  <% truncated_title = truncate("#{advice.title}", :length => 26, :omission => "...") %>
+                  <div class="advice_title"><%= link_to "#{truncated_title}", advice_home_path(advice) %></div>
                   <div class="advice_content">
                   <% truncated_advice = truncate("#{advice.description}", :length => 200, :omission => "...") %>
                   <%= raw truncated_advice %>
@@ -117,7 +119,8 @@
                   </div>
 
               <% else %>
-                  <div class="advice_title"><%= link_to "#{advice.title}", advice_home_path(advice) %></div>
+                  <% truncated_title = truncate("#{advice.title}", :length => 26, :omission => "...") %>
+                  <div class="advice_title"><%= link_to "#{truncated_title}", advice_home_path(advice) %></div>
                   <div class="advice_content">
                   <% truncated_advice = truncate("#{advice.description}", :length => 200, :omission => "...") %>
                   <%= raw truncated_advice %>
@@ -131,6 +134,7 @@
             <% end %>
 
       </div> <!-- END ITEMS -->
+    </div>
 
     <!-- SCROLLABLE -->
 

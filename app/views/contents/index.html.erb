@@ -9,6 +9,7 @@
   <thead>
     <tr>
       <th scope="col">Cím</th>
+      <th scope="col">Sorrend</th>
       <th scope="col">&nbsp;</th>
       <th scope="col">&nbsp;</th>
     </tr>
@@ -20,6 +21,7 @@
       <tr>
 
         <td><%= content.title %></td>
+        <td><%= content.sort_number %></td>
 
         <td><%= link_to 'Módosít', edit_content_path(content) %></td>
         <td class="delete"><%= link_to 'Töröl', content, :confirm => 'Biztosan törlöd?', :method => :delete %></td>

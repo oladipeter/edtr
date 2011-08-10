@@ -16,6 +16,10 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
+    <%= f.label :title, "Sorrend" %><br />
+    <%= f.text_field :sort_number %>
+  </div>
+  <div class="field">
     <%= f.label :content_id, "Tartalommal való összekötés" %><br />
     <%= f.select("content_id", Content.all.collect {|content| [ content.title, content.id ] }) %>
     <!--

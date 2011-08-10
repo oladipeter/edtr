@@ -9,6 +9,7 @@
   <thead>
     <tr>
       <th scope="col">Cím</th>
+      <th scope="col">Sorrend</th>
       <th scope="col">&nbsp;</th>
       <th scope="col">&nbsp;</th>
     </tr>
@@ -18,6 +19,7 @@
     <% @menus.each do |menu| %>
       <tr>
         <td><%= menu.title %></td>
+        <td><%= menu.sort_number %></td>
         <td><%= link_to 'Módosít', edit_menu_path(menu) %></td>
         <td class="delete"><%= link_to 'Töröl', menu, :confirm => 'Biztosan törlöd?', :method => :delete %></td>
       </tr>
