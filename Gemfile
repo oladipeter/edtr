@@ -11,7 +11,7 @@ gem 'ckeditor', '3.4.2.pre'
 gem 'paperclip', '~> 2.3'
 gem 'devise', '1.1.rc2'
 gem 'jquery-rails', '>= 0.2.6'
-gem 'mysql2', '~> 0.2.7'
+# gem 'mysql2', '~> 0.2.7'
 
 
 # Use unicorn as the web server
